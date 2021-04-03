@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Form\ProduitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,6 +76,35 @@ class ProduitController extends AbstractController
             'produit' => $product
 
         ]);
+    }
+    /**
+     * @Route("/ajout", name="ajoutproduit")
+     */
+    public function ajout(Request $request): Response
+    {
+        $produit=new Produit();
+       
+        $form = $this->createForm(ProduitType::class, $produit);
+        // traitement du formulaire
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            //$produit = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($produit);
+             $entityManager->flush();
+
+            return $this->redirectToRoute('liste');
+        }
+
+
+
+        return $this->render('produit/ajout.html.twig',['monform'=>$form->createView()]);
     }
     /**
      * @Route("/delete/{id}", name="deleteproduit")

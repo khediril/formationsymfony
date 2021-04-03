@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un nouveau produit
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+
+{{ form_start(monform) }}
+{{ form_widget(monform) }}
+<input type="submit" value="Ajouter">
+{{ form_end(monform) }}
+</div>
+{% endblock %}
+
