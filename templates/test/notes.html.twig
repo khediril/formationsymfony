@@ -1,0 +1,14 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+<h1> le prenom est : {{ prenom }}</h1>
+<h1>Liste des notes</h1>
+<ul>
+	{% for elem in tabnotes %}
+		<li>{{ elem }}</li>
+	{% endfor %}
+</ul>
+
+{% endblock %}
+
+

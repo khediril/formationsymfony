@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout produit
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h1>Affichage du produit
+			{{ produit.id }}
+		</h1>
+		<table class="table">
+
+			<tbody>
+				<tr>
+					<th scope="row">Nom produit</th>
+					<td>{{ produit.name}}</td>
+				</tr>
+				<tr>
+					<th scope="row">Prix</th>
+					<td>{{ produit.price }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Quantité</th>
+					<td>{{ produit.quantity }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Catégorie</th>
+					<td>{{ produit.categorie.name }}</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

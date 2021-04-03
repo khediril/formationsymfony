@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout produit
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h1>Liste de tous les produits
+		</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Price</th>
+					<th scope="col">Détail</th>
+					<th scope="col">Supprimer</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for p in produits %}
+
+					<tr>
+						<th scope="row">{{ p.id }}</th>
+						<td>{{ p.name }}</td>
+
+						<td>{{ p.price }}</td>
+						<td>
+							<a href='{{ path("detaliproduit",{"id":p.id}) }}'>Détail</a>
+						</td>
+						<td>
+							<a href='{{ path("deleteproduit",{"id":p.id}) }}'>Supprimer</a>
+						</td>
+
+
+					</tr>
+
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
